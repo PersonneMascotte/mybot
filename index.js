@@ -215,4 +215,14 @@ client.on('message', async message => {
     }
 }); //giveaway
 
+client.on("message", message => {
+  if(message.content === "/nuke"){
+  if (!message.member.hasPermission('ADMINISTRATOR')) {
+    message.channel.send(`Mauvais Rôle je te vois, nuke ${member} oh bas non ça marche pas mince`)
+}
+
+message.channel.clone().then(msg => msg.send('https://tenor.com/view/explosion-boom-explode-gif-17383346'))
+message.channel.delete()
+}})
+
 client.login(config.token)
