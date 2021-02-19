@@ -22,6 +22,40 @@ client.on('guildMemberAdd', async member => {
 }); //bienvenue
 
 client.on("raw", event => {
+
+  /*if(event.t === "MESSAGE_REACTION_ADD"){
+    if(event.d.message_id === "807654959633924147"){
+        let member = client.guilds.cache.get(event.d.guild_id).member.cache.get(event.d.user_id)
+
+
+        if(event.d.emoji.id === "812310926480506881"){
+          member.guild.channel.create(`${member.username}`, {type: "text"}).then(chan => {
+            let category = member.guild.channels.cache.get("806793659554725908", c => type == "category")
+            chan.setParent(category)
+
+            let role1 = member.guild.roles.cache.get("799540808080031764")
+            let role2 = member.guild.roles.cache.get("803692148398227466")
+            let role3 = member.guild.roles.cache.get("754635871428280331")
+
+            chan.updateOverwrite(role1, {
+              SEND_MESSAGES: true,
+              VIEW_CHANNEL: true
+            })
+
+            chan.updateOverwrite(role2, {
+              SEND_MESSAGES: true,
+              VIEW_CHANNEL: true
+            })
+
+            chan.updateOverwrite(role3, {
+              SEND_MESSAGES: false,
+              VIEW_CHANNEL: false
+            })
+          }).catch(console.error)
+        }
+    }
+  }; //ticket*/
+
   if(event.t === "MESSAGE_REACTION_ADD"){
     if(event.d.message_id === "799717980110979124"){
       let member = client.guilds.cache.get(event.d.guild_id).members.cache.get(event.d.user_id)
@@ -29,8 +63,8 @@ client.on("raw", event => {
         member.roles.add("807660005670256671")
       }
     }
-  }
-});//role de base
+  };//role de base
+});
 
 
 client.on("message", async message => {
@@ -123,42 +157,6 @@ client.on('message', message => {
   }
 }); //ban
 
-/*client.on("raw", event => {
-  if(event.t === "MESSAGE_REACTION_ADD"){
-    if(event.d.message_id === "807654959633924147"){
-        let member = client.guilds.cache.get(event.d.guild_id).member.cache.get(event.d.user_id)
-
-
-        if(event.d.emoji.id === "807653641325772800"){
-          member.guild.channel.create(`${member.username}`, {type: "text"}).then(chan => {
-            let category = member.guild.channels.cache.get("806793659554725908", c => type == "category")
-            chan.setParent(category)
-
-            let role1 = member.guild.roles.cache.get("799540808080031764")
-            let role2 = member.guild.roles.cache.get("803692148398227466")
-            let role3 = member.guild.roles.cache.get("754635871428280331")
-
-            chan.updateOverwrite(role1, {
-              SEND_MESSAGES: true,
-              VIEW_CHANNEL: true
-            })
-
-            chan.updateOverwrite(role2, {
-              SEND_MESSAGES: true,
-              VIEW_CHANNEL: true
-            })
-
-            chan.updateOverwrite(role3, {
-              SEND_MESSAGES: false,
-              VIEW_CHANNEL: false
-            })
-          }).catch(console.error)
-        }
-    }
-  }
-}) //ticket*/
-
-
 client.on("message", async message => {
   if(message.content === "/close"){
     if(message.channel.parentID == "806793659554725908"){
@@ -217,4 +215,4 @@ client.on('message', async message => {
     }
 }); //giveaway
 
-bot.login(config.token)
+client.login(config.token)
